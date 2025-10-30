@@ -3,7 +3,6 @@ LABEL maintainer="Stille <stille@ioiox.com>"
 
 ENV VERSION 0.65.0
 ENV TZ=Asia/Shanghai
-ENV FRPS_CONFIG=/frp/frps.toml  # 设置配置文件路径环境变量
 WORKDIR /
 
 RUN apk add --no-cache tzdata \
@@ -25,4 +24,4 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then export PLATFORM=amd64 ; \
 
 VOLUME /frp
 
-CMD /frp/frps -c ${FRPS_CONFIG}  # 使用环境变量指定配置文件路径
+CMD /frp/frps -c /frp/frps.toml
